@@ -1,0 +1,303 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap');
+
+@layer base {
+  :root {
+    --background: 40 20% 97%;
+    --foreground: 0 0% 9%;
+
+    --card: 40 20% 97%;
+    --card-foreground: 0 0% 9%;
+
+    --popover: 40 15% 95%;
+    --popover-foreground: 0 0% 9%;
+
+    --primary: 0 0% 9%;
+    --primary-foreground: 40 20% 97%;
+
+    --secondary: 40 10% 92%;
+    --secondary-foreground: 0 0% 20%;
+
+    --muted: 40 10% 90%;
+    --muted-foreground: 0 0% 45%;
+
+    --accent: 40 10% 92%;
+    --accent-foreground: 0 0% 9%;
+
+    --destructive: 0 60% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 80%;
+    --input: 0 0% 80%;
+    --ring: 0 0% 9%;
+
+    --radius: 0px;
+
+    /* Custom tokens */
+    --text-dim: 0 0% 55%;
+    --text-code: 0 0% 30%;
+    --border-dashed: 0 0% 70%;
+    --status-merged: 142 50% 35%;
+    --status-shipped: 210 60% 45%;
+    --status-archived: 0 0% 50%;
+    --status-wip: 35 80% 50%;
+  }
+
+  .dark {
+    --background: 0 0% 6%;
+    --foreground: 40 10% 90%;
+    --card: 0 0% 8%;
+    --card-foreground: 40 10% 90%;
+    --popover: 0 0% 8%;
+    --popover-foreground: 40 10% 90%;
+    --primary: 40 10% 90%;
+    --primary-foreground: 0 0% 6%;
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 40 10% 80%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 55%;
+    --accent: 0 0% 15%;
+    --accent-foreground: 40 10% 90%;
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 40 10% 90%;
+    --text-dim: 0 0% 50%;
+    --text-code: 0 0% 70%;
+    --border-dashed: 0 0% 30%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'JetBrains Mono', 'Fira Code', 'SF Mono', monospace;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  ::selection {
+    @apply bg-foreground text-background;
+  }
+}
+
+@layer utilities {
+  .font-mono {
+    font-family: 'JetBrains Mono', 'Fira Code', 'SF Mono', monospace;
+  }
+
+  .font-sans {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  .text-dim {
+    color: hsl(var(--text-dim));
+  }
+
+  .text-code {
+    color: hsl(var(--text-code));
+  }
+
+  .border-dashed-custom {
+    border: 1px dashed hsl(var(--border-dashed));
+    transition: border-color 120ms ease, border-style 120ms ease;
+  }
+
+  .border-dashed-custom:hover {
+    border-style: solid;
+    border-color: hsl(var(--foreground) / 0.4);
+  }
+
+  .divider {
+    @apply w-full h-px bg-border;
+  }
+
+  .divider-dashed {
+    @apply w-full border-t border-dashed;
+    border-color: hsl(var(--border-dashed));
+  }
+}
+
+/* Status colors */
+.status-merged {
+  color: hsl(var(--status-merged));
+}
+
+.status-shipped {
+  color: hsl(var(--status-shipped));
+}
+
+.status-archived {
+  color: hsl(var(--status-archived));
+}
+
+.status-wip {
+  color: hsl(var(--status-wip));
+}
+
+/* Subtle animations */
+@keyframes cursor-blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes confetti {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) translate(0, 0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) translate(var(--confetti-x), var(--confetti-y)) scale(0.5);
+  }
+}
+
+.animate-confetti {
+  animation: confetti 700ms ease-out forwards;
+}
+
+@keyframes fade-in-up {
+  from { 
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-cursor {
+  animation: cursor-blink 1s step-end infinite;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.4s ease-out forwards;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.4s ease-out forwards;
+}
+
+/* Stagger fade in with upward motion */
+.stagger > * {
+  opacity: 0;
+  animation: fade-in-up 0.35s ease-out forwards;
+}
+
+.stagger > *:nth-child(1) { animation-delay: 0.05s; }
+.stagger > *:nth-child(2) { animation-delay: 0.1s; }
+.stagger > *:nth-child(3) { animation-delay: 0.15s; }
+.stagger > *:nth-child(4) { animation-delay: 0.2s; }
+.stagger > *:nth-child(5) { animation-delay: 0.25s; }
+.stagger > *:nth-child(6) { animation-delay: 0.3s; }
+.stagger > *:nth-child(7) { animation-delay: 0.35s; }
+.stagger > *:nth-child(8) { animation-delay: 0.4s; }
+
+/* Link hover effect - underline animation */
+.link-hover {
+  @apply transition-all duration-100;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: transparent;
+  cursor: pointer;
+}
+
+.link-hover:hover {
+  text-decoration-color: hsl(var(--foreground));
+}
+
+/* External link style */
+.link-external {
+  @apply transition-all duration-100;
+  cursor: alias;
+}
+
+.link-external:hover {
+  opacity: 0.8;
+}
+
+/* Command block */
+.command-block {
+  @apply px-4 py-3 bg-muted/50 border border-border text-sm transition-all;
+  font-family: 'JetBrains Mono', monospace;
+  transition-duration: 120ms;
+}
+
+.command-block:hover {
+  @apply bg-muted/70;
+  border-color: hsl(var(--foreground) / 0.2);
+}
+
+.command-block::before {
+  content: '› ';
+  @apply text-dim;
+}
+
+/* Section title with icon */
+.section-title {
+  @apply flex items-center gap-2 text-lg font-semibold text-foreground;
+}
+
+.section-title::before {
+  content: '▸';
+  @apply text-dim text-sm;
+}
+
+/* Caret indicator for active/hover */
+.caret-item {
+  position: relative;
+  padding-left: 1rem;
+  transition: padding-left 120ms ease;
+}
+
+.caret-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  opacity: 0;
+  transition: opacity 120ms ease;
+}
+
+.caret-item:hover::before {
+  content: '›';
+  opacity: 1;
+  color: hsl(var(--text-dim));
+}
+
+.caret-item:hover {
+  padding-left: 1.25rem;
+}
+
+/* Interactive cursor styles */
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.cursor-text-select {
+  cursor: text;
+}
+
+/* Subtle opacity transitions */
+.hover-opacity {
+  transition: opacity 100ms ease;
+}
+
+.hover-opacity:hover {
+  opacity: 0.75;
+}
