@@ -45,12 +45,13 @@ const HeroSection = () => {
           </div>
 
           {/* Hero loop */}
-          <div className="mt-10 overflow-hidden rounded-2xl border border-border/60 bg-muted/30 shadow-lg">
+          <div className="mt-10 overflow-hidden rounded-2xl border border-border/60 bg-muted/30 shadow-lg aspect-video">
             <img
               className="h-full w-full object-cover"
               src="/coding-lofi.gif"
-              alt="Coding lofi loop"
-              loading="lazy"
+              alt="Gusti Rafi - Coding and building web systems"
+              loading="eager"
+              decoding="async"
             />
           </div>
 
@@ -60,6 +61,7 @@ const HeroSection = () => {
               href="https://github.com/gustirafi" 
               target="_blank" 
               rel="noopener noreferrer"
+              aria-label="GitHub profile of Gusti Rafi"
               className="link-external hover:text-foreground flex items-center gap-1.5"
             >
               <span className="text-dim text-xs">→</span>
@@ -69,13 +71,15 @@ const HeroSection = () => {
               href="https://www.linkedin.com/in/rafigusti/" 
               target="_blank" 
               rel="noopener noreferrer"
+              aria-label="LinkedIn profile of Gusti Rafi"
               className="link-external hover:text-foreground flex items-center gap-1.5"
             >
               <span className="text-dim text-xs">→</span>
               linkedin
             </a>
             <a 
-              href="mailto:hello@gustirafi49@gmail.com"
+              href="mailto:gustirafi49@gmail.com"
+              aria-label="Send email to Gusti Rafi"
               className="link-external hover:text-foreground flex items-center gap-1.5"
             >
               <span className="text-dim text-xs">@</span>

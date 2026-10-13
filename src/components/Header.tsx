@@ -2,9 +2,9 @@ const Header = () => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-sm border-b border-dashed" style={{ borderColor: 'hsl(var(--border-dashed))' }}>
       <div className="container max-w-3xl py-4">
-        <nav className="flex items-center justify-between">
+        <nav aria-label="Main Navigation" className="flex items-center justify-between">
           {/* Logo */}
-          <a href="#" className="text-foreground font-semibold hover-opacity flex items-center gap-1.5">
+          <a href="#" aria-label="Gusti Rafi Portfolio Home" className="text-foreground font-semibold hover-opacity flex items-center gap-1.5">
             <span className="text-dim text-xs">~</span>
             gusti.rafi
           </a>

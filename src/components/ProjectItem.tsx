@@ -56,6 +56,7 @@ const ProjectItem = ({ project }: ProjectItemProps) => {
               href={project.github}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label={`Source code repository for ${project.title}`}
               className="text-muted-foreground link-external hover:text-foreground flex items-center gap-1"
             >
               <span className="text-dim text-[10px]">↗</span>
@@ -67,6 +68,7 @@ const ProjectItem = ({ project }: ProjectItemProps) => {
               href={project.demo}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label={`Live demo for ${project.title}`}
               className="text-muted-foreground link-external hover:text-foreground flex items-center gap-1"
             >
               <span className="text-dim text-[10px]">↗</span>

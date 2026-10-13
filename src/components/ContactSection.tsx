@@ -29,7 +29,8 @@ const ContactSection = () => {
               <span className="text-dim text-xs">@</span>
               <span className="text-dim">email:</span>
               <a 
-                href="mailto:hello@gustirafi.dev" 
+                href="mailto:gustirafi49@gmail.com" 
+                aria-label="Send email to gustirafi49@gmail.com"
                 className="text-foreground link-hover"
               >
                 gustirafi49@gmail.com
@@ -42,6 +43,7 @@ const ContactSection = () => {
                 href="https://github.com/gustirafi" 
                 target="_blank" 
                 rel="noopener noreferrer"
+                aria-label="Gusti Rafi GitHub profile"
                 className="text-foreground link-external flex items-center gap-1"
               >
                 @gustirafi
@@ -55,6 +57,7 @@ const ContactSection = () => {
                 href="https://www.linkedin.com/in/rafigusti/" 
                 target="_blank" 
                 rel="noopener noreferrer"
+                aria-label="Gusti Rafi LinkedIn profile"
                 className="text-foreground link-external flex items-center gap-1"
               >
                 /in/rafigusti
